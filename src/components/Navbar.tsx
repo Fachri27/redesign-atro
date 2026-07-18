@@ -84,7 +84,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className={`fixed left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "top-0" : "top-[40px] sm:top-[40px]"}`}>
+    <div className={`fixed left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "top-0" : "top-0"}`}>
       {/* TopBar */}
       <div className={`bg-gray-900 text-white text-sm transition-all duration-500 ${isScrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
