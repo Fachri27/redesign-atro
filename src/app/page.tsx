@@ -8,10 +8,12 @@ import Berita from "@/components/Berita";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import BumperLoading from "@/components/BumperLoading";
 
 export default function Home() {
   return (
     <main className="flex-1">
+      <BumperLoading />
       <Navbar />
       <Hero />
       <Berita />

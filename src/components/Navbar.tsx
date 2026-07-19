@@ -11,46 +11,49 @@ const navLinks = [
     label: "Profil",
     href: "#tentang",
     children: [
-      { label: "Visi & Misi", href: "https://atrodas.ac.id/visi-misi-2/" },
-      { label: "Struktur Organisasi", href: "https://atrodas.ac.id/struktur-organisasi/" },
-      { label: "Lokasi Kampus", href: "https://atrodas.ac.id/lokasi-kampus-radiologi-cikampek/" },
-      { label: "Galeri Kegiatan", href: "https://atrodas.ac.id/galeri-kegiatan/" },
+      { label: "Visi & Misi", href: "/profil/visi-misi" },
+      { label: "Struktur Organisasi", href: "/profil/struktur-organisasi" },
+      { label: "Lokasi Kampus", href: "/profil/lokasi-kampus" },
+      { label: "Galeri Kegiatan", href: "/profil/galeri-kegiatan" },
     ],
   },
   {
     label: "Program Studi",
     href: "#prodi",
     children: [
-      { label: "Prodi D4 TRP", href: "https://atrodas.ac.id/prodi-d4-sarjana-terapan-radiologi-trp/" },
-      { label: "Kurikulum D4 Radiologi", href: "https://atrodas.ac.id/kurikulum-d4-radiologi/" },
-      { label: "Profil Lulusan", href: "https://atrodas.ac.id/profil-lulusan/" },
+      { label: "Prodi D4 TRP", href: "/prodi/d4-trp" },
+      { label: "Kurikulum D4 Radiologi", href: "/prodi/kurikulum" },
+      { label: "Profil Lulusan", href: "/prodi/profil-lulusan" },
     ],
   },
   {
     label: "Fasilitas",
     href: "#fasilitas",
     children: [
-      { label: "Ruang Kelas", href: "https://atrodas.ac.id/ruang-kelas/" },
-      { label: "Laboratorium Radiologi", href: "https://atrodas.ac.id/laboratorium-radiologi/" },
-      { label: "Perpustakaan", href: "https://atrodas.ac.id/perpustakaan/" },
+      { label: "Ruang Kelas", href: "/fasilitas/ruang-kelas" },
+      { label: "Laboratorium Radiologi", href: "/fasilitas/laboratorium" },
+      { label: "Perpustakaan", href: "/fasilitas/perpustakaan" },
     ],
   },
   {
     label: "Informasi",
     href: "#berita",
     children: [
-      { label: "Informasi Akademik", href: "https://atrodas.ac.id/informasi-akademik/" },
-      { label: "Artikel Radiologi", href: "https://atrodas.ac.id/tutorial-radiologi/" },
-      { label: "Berita Seputar Kampus", href: "https://atrodas.ac.id/berita-kampus/" },
-      { label: "Beasiswa", href: "https://atrodas.ac.id/beasiswa/" },
-      { label: "Tentang PMB", href: "https://atrodas.ac.id/persyaratan-pendaftar-calon-mahasiswa-baru/" },
+      { label: "Informasi Akademik", href: "/informasi/akademik" },
+      { label: "Artikel Radiologi", href: "/informasi/artikel" },
+      { label: "Berita Seputar Kampus", href: "/informasi/berita" },
+      { label: "Beasiswa", href: "/informasi/beasiswa" },
+      { label: "Tentang PMB", href: "/informasi/pmb" },
     ],
   },
   { label: "Kontak", href: "#kontak" },
 ];
 
 function smoothScrollTo(href: string) {
-  if (!href.startsWith("#")) return;
+  if (!href.startsWith("#")) {
+    window.location.href = href;
+    return;
+  }
   const target = document.querySelector(href);
   if (!target) return;
   gsap.to(window, {
@@ -146,7 +149,7 @@ export default function Navbar() {
                         className={`absolute top-full left-0 mt-1 bg-white shadow-2xl border border-gray-100 min-w-[240px] transition-all duration-200 ${openDropdown === i ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"}`}
                       >
                         {link.children.map((child) => (
-                          <a key={child.href} href={child.href} target="_blank" rel="noopener noreferrer" className="block px-5 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">
+                          <a key={child.href} href={child.href} className="block px-5 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">
                             {child.label}
                           </a>
                         ))}
@@ -188,7 +191,7 @@ export default function Navbar() {
                       </button>
                       <div className={`overflow-hidden transition-all duration-300 ${openMobileDropdown === i ? "max-h-[400px]" : "max-h-0"}`}>
                         {link.children.map((child) => (
-                          <a key={child.href} href={child.href} target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileOpen(false)} className="block pl-8 pr-4 py-2.5 text-sm text-gray-500 hover:text-primary transition-colors">
+                          <a key={child.href} href={child.href} onClick={() => setIsMobileOpen(false)} className="block pl-8 pr-4 py-2.5 text-sm text-gray-500 hover:text-primary transition-colors">
                             {child.label}
                           </a>
                         ))}
